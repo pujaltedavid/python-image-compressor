@@ -34,6 +34,8 @@ The other dimension of the image is `smaller_side*aspect_ratio` and would depend
 
 The script uses a value of 80% for the normal images and a 10% for the lazy load images. The lazy load images are intended to be blurred when being displayed to the user. The compression value affects the actual JPG compression (where 100% would not make any compression at all).
 
+Also, for the non lazy-load images, a slight sharpness process is applied in order to enhance the image after the resizing.
+
 Regular resizing algorightms may not match the pixels of the original image completely, that is, they might put 1081 pixel input image in a 1080 pixel output image. That causes an important loss of quality, because the pixels do not fit. This algorithm takes into account the aspect ratio, and if the pixels do not fit, it crops by 1 pixel the image, in order to not loose quality. A maximum row or column of 1 pixel can be cropped, because sometimes `min_size*aspect_ratio` may not be integer. Note that a single pixel crop is not visible to human sight and can be a better option in front of loosing quality.
 
 ### An example
